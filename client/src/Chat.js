@@ -23,19 +23,22 @@ function Chat({ socket, username, room }) {
     };
 
     useEffect(() => {
-
         socket.on("receive_message", (data)=>{
             console.log("Receiving message")
             setMessageList((list)=>[...list,data])
         })
-       
-
     },[socket]);
 
     useEffect(() => {
         socket.emit("joined", socket.id, room)
         console.log(socket.id)
-    },[])
+    },[]);
+
+    /*function joined(){
+        socket.emit("joined", socket.id, room)
+        console.log(socket.id)
+    }*/
+
 
 
     return(
